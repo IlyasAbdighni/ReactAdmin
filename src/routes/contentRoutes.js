@@ -2,18 +2,22 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Login from '../components/auth/Login';
-import Dash from '../components/content/index';
+import Dashboard from '../components/content/Dashboard';
+import Charts from '../components/content/Charts';
+
+// const Dashboard = () => {
+//   return <div>Dashboard</div>;
+// };
 
 const ContentRoutes = () => {
   return (
-    <BrowserRouter>
-      <div>
-        <Switch>
-          <Route path="/" component={Dash} exact={true} />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <div>
+      <Switch>
+        <Route path="/" component={Dashboard} exact={true} />
+        <Route path="/login" component={Login} />
+        <Route path="/charts" component={Charts} />
+      </Switch>
+    </div>
   );
 };
 

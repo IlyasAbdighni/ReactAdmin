@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
 
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
@@ -80,7 +83,7 @@ class App extends React.Component {
     const { classes, theme } = this.props;
     if (auth) {
       return (
-        <div>
+        <div className={classes.appFrame}>
           <AppBar className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
               <IconButton
@@ -95,6 +98,9 @@ class App extends React.Component {
                 Blog
               </Typography>
               <Button color="contrast">Login</Button>
+              <Link to="/login">
+                <Button color="contrast">Login</Button>
+              </Link>
             </Toolbar>
           </AppBar>
           <SideNav
@@ -117,10 +123,11 @@ class App extends React.Component {
   render() {
     const { classes, theme } = this.props;
 
+    // return <div className={classes.root}>{this.renderContent()}</div>;
     return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>{this.renderContent()}</div>
-      </div>
+      <BrowserRouter>
+        <div>{this.renderContent()}</div>
+      </BrowserRouter>
     );
   }
 }

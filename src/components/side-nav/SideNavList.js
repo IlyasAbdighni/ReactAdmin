@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
@@ -44,6 +45,9 @@ class SideNavList extends React.Component {
   }
   render() {
     const { classes, theme } = this.props;
+    // const renderLink = () => {
+    //   return <Link to="/" />;
+    // };
     return (
       <div>
         <div className={classes.drawerHeader}>
@@ -57,12 +61,19 @@ class SideNavList extends React.Component {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button component={Link} to="/">
             <ListItemIcon>
               <Icon>home</Icon>
             </ListItemIcon>
-            <ListItemText primary="HOME" />
+            <ListItemText primary="Dashboard" />
           </ListItem>
+          <ListItem button component={Link} to="/charts">
+            <ListItemIcon>
+              <Icon>insert_chart</Icon>
+            </ListItemIcon>
+            <ListItemText primary="Charts" />
+          </ListItem>
+
           <ListItem button onClick={this.handleClick}>
             <ListItemIcon>
               <Icon>library_add</Icon>
